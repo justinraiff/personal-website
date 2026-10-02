@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Muscle Recovery Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <header>
+            <h1>Muscle Recovery</h1>
+            <p>Tap a muscle when you train it.</p>
+        </header>
+
+        <div class="legend">
+            <span><span class="dot green"></span>Recent</span>
+            <span><span class="dot yellow"></span>Due Soon</span>
+            <span><span class="dot orange"></span>Due</span>
+            <span><span class="dot red"></span>Overdue</span>
+        </div>
+
+        <section class="muscle-maps">
+
+            <!-- FRONT -->
+            <div class="muscle-map">
+
+                <h2>FRONT</h2>
+
+                <svg viewBox="0 0 180 330">
+
+                    <!-- Head -->
+                    <circle
+                        cx="90"
+                        cy="27"
+                        r="17"
+                        fill="#cccccc"
+                    />
+
+                    <!-- Shoulders -->
+                    <path
+                        class="muscle"
+                        data-muscle="shoulders"
+                        d="M70 62Q51 62 38 76L50 94 66 83 73 72Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="shoulders"
+                        d="M110 62Q129 62 142 76L130 94 114 83 107 72Z"
+                    />
+
+                    <!-- Chest -->
+                    <path
+                        class="muscle"
+                        data-muscle="chest"
+                        d="M71 72Q90 67 109 72L106 105Q90 113 74 105Z"
+                    />
+
+                    <!-- Biceps -->
+                    <path
+                        class="muscle"
+                        data-muscle="biceps"
+                        d="M50 94L38 112 48 145 61 139 58 111Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="biceps"
+                        d="M130 94L142 112 132 145 119 139 122 111Z"
+                    />
+
+                    <!-- Core -->
+                    <path
+                        class="muscle"
+                        data-muscle="core"
+                        d="M75 108Q90 114 105 108L103 164Q90 170 77 164Z"
+                    />
+
+                    <!-- Quads -->
+                    <path
+                        class="muscle"
+                        data-muscle="quads"
+                        d="M77 165L89 169 87 234 68 228 64 187Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="quads"
+                        d="M103 165L91 169 93 234 112 228 116 187Z"
+                    />
+
+                    <!-- Calves -->
+                    <path
+                        class="muscle"
+                        data-muscle="calves"
+                        d="M68 230L86 236 82 287 68 287 62 253Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="calves"
+                        d="M112 230L94 236 98 287 112 287 118 253Z"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <!-- BACK -->
+            <div class="muscle-map">
+
+                <h2>BACK</h2>
+
+                <svg viewBox="0 0 180 330">
+
+                    <!-- Head -->
+                    <circle
+                        cx="90"
+                        cy="27"
+                        r="17"
+                        fill="#cccccc"
+                    />
+
+                    <!-- Upper back -->
+                    <path
+                        class="muscle"
+                        data-muscle="back"
+                        d="M72 66Q90 56 108 66L105 116Q90 126 75 116Z"
+                    />
+
+                    <!-- Lats -->
+                    <path
+                        class="muscle"
+                        data-muscle="lats"
+                        d="M74 76L58 83 50 126 70 139 78 115Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="lats"
+                        d="M106 76L122 83 130 126 110 139 102 115Z"
+                    />
+
+                    <!-- Triceps -->
+                    <path
+                        class="muscle"
+                        data-muscle="triceps"
+                        d="M50 94L38 112 48 145 61 139 58 111Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="triceps"
+                        d="M130 94L142 112 132 145 119 139 122 111Z"
+                    />
+
+                    <!-- Glutes -->
+                    <path
+                        class="muscle"
+                        data-muscle="glutes"
+                        d="M72 140Q90 133 108 140L111 169Q90 183 69 169Z"
+                    />
+
+                    <!-- Hamstrings -->
+                    <path
+                        class="muscle"
+                        data-muscle="hamstrings"
+                        d="M69 171L88 173 86 234 68 228 64 187Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="hamstrings"
+                        d="M111 171L92 173 94 234 112 228 116 187Z"
+                    />
+
+                    <!-- Calves -->
+                    <path
+                        class="muscle"
+                        data-muscle="calves"
+                        d="M68 230L86 236 82 287 68 287 62 253Z"
+                    />
+
+                    <path
+                        class="muscle"
+                        data-muscle="calves"
+                        d="M112 230L94 236 98 287 112 287 118 253Z"
+                    />
+
+                </svg>
+
+            </div>
+
+        </section>
+
+
+        <!-- Information about selected muscle -->
+        <section class="info" id="info">
+
+            <strong>Tap a muscle</strong>
+
+            <p>
+                Select a muscle group to see its status.
+                Tapping it records a workout today.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
