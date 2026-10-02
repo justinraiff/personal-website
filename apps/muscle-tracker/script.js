@@ -43,7 +43,8 @@ const muscleNames = {
 // was trained.
 // ------------------------------------
 
-const muscleData = {};
+let muscleData =
+    JSON.parse(localStorage.getItem("muscleData")) || {};
 
 
 // ------------------------------------
@@ -133,21 +134,17 @@ function updateMuscleColors() {
 
 function trainMuscle(muscle) {
 
-    // Record the current time.
-
     muscleData[muscle] = Date.now();
 
-
-    // Update the colors.
+    localStorage.setItem(
+        "muscleData",
+        JSON.stringify(muscleData)
+    );
 
     updateMuscleColors();
 
-
-    // Update information panel.
-
     const info =
         document.getElementById("info");
-
 
     info.innerHTML = `
 
