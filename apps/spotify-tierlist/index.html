@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121212">
+  <title>My Spotify Tier List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">♪</div>
+        <div>
+          <p class="eyebrow">PERSONAL PROJECT</p>
+          <h1>My Spotify Tier List</h1>
+        </div>
+      </div>
+      <div class="connection-pill"><span class="status-dot"></span> Demo mode</div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">YOUR MUSIC, YOUR RANKINGS</p>
+        <h2>Every song has a place.</h2>
+        <p class="subheading">Import your playlist, then sort your favorites into tiers.</p>
+      </div>
+      <button class="primary-button" id="connect-button" type="button" disabled>
+        <span aria-hidden="true">♫</span> Spotify connection — coming later
+      </button>
+    </section>
+
+    <section class="stats-grid" aria-label="Ranking progress">
+      <article class="stat-card">
+        <span class="stat-label">Songs loaded</span>
+        <strong id="loaded-count">12</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Ranked</span>
+        <strong id="ranked-count">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Remaining</span>
+        <strong id="remaining-count">12</strong>
+      </article>
+      <article class="stat-card progress-card">
+        <div class="progress-heading"><span class="stat-label">Progress</span><strong id="progress-label">0%</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">RANKING BOARD</p>
+          <h3>Your tiers</h3>
+        </div>
+        <span class="helper-text">Your rankings will appear here</span>
+      </div>
+      <div class="tier-board" id="tier-board">
+        <div class="tier-row"><div class="tier-label tier-s">S</div><div class="tier-content tier-dropzone" id="tier-S" data-tier="S"></div><span class="tier-count" id="count-S">0</span></div>
+        <div class="tier-row"><div class="tier-label tier-a">A</div><div class="tier-content tier-dropzone" id="tier-A" data-tier="A"></div><span class="tier-count" id="count-A">0</span></div>
+        <div class="tier-row"><div class="tier-label tier-b">B</div><div class="tier-content tier-dropzone" id="tier-B" data-tier="B"></div><span class="tier-count" id="count-B">0</span></div>
+        <div class="tier-row"><div class="tier-label tier-c">C</div><div class="tier-content tier-dropzone" id="tier-C" data-tier="C"></div><span class="tier-count" id="count-C">0</span></div>
+        <div class="tier-row"><div class="tier-label tier-d">D</div><div class="tier-content tier-dropzone" id="tier-D" data-tier="D"></div><span class="tier-count" id="count-D">0</span></div>
+        <div class="tier-row"><div class="tier-label tier-f">F</div><div class="tier-content tier-dropzone" id="tier-F" data-tier="F"></div><span class="tier-count" id="count-F">0</span></div>
+      </div>
+    </section>
+
+    <section class="song-library">
+      <div class="section-heading library-heading">
+        <div>
+          <p class="eyebrow">UP NEXT</p>
+          <h3>Unranked songs <span class="count-badge" id="unranked-badge">12</span></h3>
+          <p class="helper-text">Songs are shuffled for a fresh ranking order.</p>
+        </div>
+        <div class="library-actions"><button class="secondary-button" id="undo-button" type="button" disabled>↶ Undo</button><button class="secondary-button" id="reshuffle-button" type="button">↻ Shuffle order</button></div>
+      </div>
+      <div class="search-wrap">
+        <span aria-hidden="true">⌕</span>
+        <input id="song-search" type="search" placeholder="Search songs or artists..." autocomplete="off">
+        <kbd>/</kbd>
+      </div>
+      <div class="song-list dropzone" id="song-list" data-tier="unranked" aria-live="polite"></div>
+      <p class="list-footer" id="list-footer">Drag songs into a tier · Changes save automatically in this browser</p>
+    </section>
+
+    <footer>
+      <span>Built for your ears, not the algorithm.</span>
+      <span>Stage 2 · Drag-and-drop prototype</span>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
