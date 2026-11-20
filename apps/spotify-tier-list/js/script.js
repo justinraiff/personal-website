@@ -477,8 +477,15 @@ function initializeSortables() {
     group: { name: "spotify-songs", pull: true, put: true }, animation: 0, draggable: ".song-item",
     ghostClass: "sortable-ghost", chosenClass: "sortable-chosen", fallbackOnBody: true, fallbackTolerance: 4, swapThreshold: 0.65,
     onStart: () => { undoSnapshot = snapshot(); updateStats(); },
-    onMove: event => { containers.forEach(item => item.classList.remove("sortable-drag-over")); event.to.classList.add("sortable-drag-over"); },
-    onEnd: () => { containers.forEach(item => item.classList.remove("sortable-drag-over")); syncFromDOM(); }
+    onMove: event => {
+      containers.forEach(item => item.classList.remove("sortable-drag-over"));
+      if (event.to && event.to.classList.contains("tier-dropzone")) event.to.classList.add("sortable-drag-over");
+    },
+    onEnd: () => {
+      containers.forEach(item => item.classList.remove("sortable-drag-over"));
+      syncFromDOM();
+      applyCollapsedTiers();
+    }
   }));
 }
 function disconnect() {

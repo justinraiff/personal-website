@@ -132,9 +132,11 @@ footer { display: flex; justify-content: space-between; color: #666; font-size: 
 .tier-row.collapsed { min-height: 42px; align-items: center; }
 .tier-row.collapsed .tier-toggle { min-height: 30px; }
 .tier-row.collapsed .collapse-indicator { transform: rotate(-90deg); }
-.tier-row.collapsed .tier-content { min-height: 24px; height: 24px; overflow: hidden; position: relative; padding: 0 8px; }
-.tier-row.collapsed .tier-content > * { visibility: hidden; }
-.tier-row.collapsed .tier-content::after { content: "Collapsed · drop songs here"; color: #777; font-size: 10px; white-space: nowrap; }
+.tier-row.collapsed .tier-content { min-height: 34px; height: 34px; min-width: 0; overflow: hidden; position: relative; display: flex; flex-wrap: nowrap; align-items: center; padding: 0 8px; border: 1px dashed #454545; border-radius: 6px; }
+.tier-row.collapsed .tier-content > .song-item { display: none !important; }
+.tier-row.collapsed .tier-content::after { content: "Collapsed · drop songs here"; color: #999; font-size: 10px; white-space: nowrap; pointer-events: none; }
+.tier-row.collapsed .tier-content.sortable-drag-over { border-color: var(--green); background: rgba(105, 199, 138, .12); }
+.tier-row.collapsed .tier-content.sortable-drag-over::after { content: "Release to add to this tier"; color: var(--green); }
 @media (max-width: 700px) {
   .board-actions { gap: 8px; }
   .board-actions .helper-text { display: none; }
