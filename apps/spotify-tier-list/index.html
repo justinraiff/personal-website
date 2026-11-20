@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121212">
+  <title>My Spotify Tier List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark" aria-hidden="true">♪</div><div><p class="eyebrow">PERSONAL PROJECT</p><h1>My Spotify Tier List</h1></div></div>
+      <div class="connection-pill" id="connection-pill"><span class="status-dot" id="status-dot"></span><span id="connection-label">Not connected</span></div>
+    </header>
+
+    <section class="intro">
+      <div><p class="eyebrow">YOUR MUSIC, YOUR RANKINGS</p><h2>Every song has a place.</h2><p class="subheading">Connect Spotify, choose your playlist, then sort your favorites into tiers.</p></div>
+      <div class="spotify-actions">
+        <button class="primary-button" id="connect-button" type="button">♫ Connect Spotify</button>
+        <button class="secondary-button" id="disconnect-button" type="button" hidden>Disconnect</button>
+      </div>
+    </section>
+
+    <section class="import-panel" id="import-panel" hidden>
+      <div class="import-copy"><strong>Choose a playlist</strong><span id="import-help">Your playlists will appear here after connecting.</span></div>
+      <select id="playlist-select" aria-label="Choose a Spotify playlist"><option value="">Loading playlists…</option></select>
+      <button class="primary-button" id="import-button" type="button" disabled>Import playlist</button>
+    </section>
+    <p class="notice" id="notice" role="status" aria-live="polite">Connect Spotify to load your playlist. Your rankings are saved in this browser.</p>
+
+    <section class="stats-grid" aria-label="Ranking progress">
+      <article class="stat-card"><span class="stat-label">Songs loaded</span><strong id="loaded-count">0</strong></article>
+      <article class="stat-card"><span class="stat-label">Ranked</span><strong id="ranked-count">0</strong></article>
+      <article class="stat-card"><span class="stat-label">Remaining</span><strong id="remaining-count">0</strong></article>
+      <article class="stat-card progress-card"><div class="progress-heading"><span class="stat-label">Progress</span><strong id="progress-label">0%</strong></div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></article>
+    </section>
+
+    <section class="workspace">
+      <div class="section-heading"><div><p class="eyebrow">RANKING BOARD</p><h3>Your tiers</h3></div><div class="board-actions"><span class="helper-text">Drag songs into a tier</span><button class="secondary-button small-button" id="collapse-all-button" type="button">Collapse all</button></div></div>
+      <div class="tier-board" id="tier-board">
+        <div class="tier-row"><button class="tier-label tier-s tier-toggle" type="button" data-collapse-tier="S" aria-expanded="true" aria-label="Collapse S tier" title="Collapse S tier">S<span class="collapse-indicator" aria-hidden="true">⌄</span></button><div class="tier-content tier-dropzone" id="tier-S" data-tier="S"></div><span class="tier-count" id="count-S">0</span></div>
+        <div class="tier-row"><button class="tier-label tier-a tier-toggle" type="button" data-collapse-tier="A" aria-expanded="true" aria-label="Collapse A tier" title="Collapse A tier">A<span class="collapse-indicator" aria-hidden="true">⌄</span></button><div class="tier-content tier-dropzone" id="tier-A" data-tier="A"></div><span class="tier-count" id="count-A">0</span></div>
+        <div class="tier-row"><button class="tier-label tier-b tier-toggle" type="button" data-collapse-tier="B" aria-expanded="true" aria-label="Collapse B tier" title="Collapse B tier">B<span class="collapse-indicator" aria-hidden="true">⌄</span></button><div class="tier-content tier-dropzone" id="tier-B" data-tier="B"></div><span class="tier-count" id="count-B">0</span></div>
+        <div class="tier-row"><button class="tier-label tier-c tier-toggle" type="button" data-collapse-tier="C" aria-expanded="true" aria-label="Collapse C tier" title="Collapse C tier">C<span class="collapse-indicator" aria-hidden="true">⌄</span></button><div class="tier-content tier-dropzone" id="tier-C" data-tier="C"></div><span class="tier-count" id="count-C">0</span></div>
+        <div class="tier-row"><button class="tier-label tier-d tier-toggle" type="button" data-collapse-tier="D" aria-expanded="true" aria-label="Collapse D tier" title="Collapse D tier">D<span class="collapse-indicator" aria-hidden="true">⌄</span></button><div class="tier-content tier-dropzone" id="tier-D" data-tier="D"></div><span class="tier-count" id="count-D">0</span></div>
+        <div class="tier-row"><button class="tier-label tier-f tier-toggle" type="button" data-collapse-tier="F" aria-expanded="true" aria-label="Collapse F tier" title="Collapse F tier">F<span class="collapse-indicator" aria-hidden="true">⌄</span></button><div class="tier-content tier-dropzone" id="tier-F" data-tier="F"></div><span class="tier-count" id="count-F">0</span></div>
+      </div>
+    </section>
+
+    <section class="song-library">
+      <div class="section-heading library-heading"><div><p class="eyebrow">UP NEXT</p><h3>Unranked songs <span class="count-badge" id="unranked-badge">0</span></h3><p class="helper-text">Songs are shuffled for a fresh ranking order.</p></div><div class="library-actions"><button class="secondary-button" id="export-button" type="button" disabled>↓ Backup</button><button class="secondary-button" id="export-spotify-button" type="button" disabled>♫ Export tiers to Spotify</button><button class="secondary-button" id="import-backup-button" type="button">↑ Import backup</button><input id="backup-file-input" type="file" accept="application/json,.json" hidden><button class="secondary-button" id="undo-button" type="button" disabled>↶ Undo</button><button class="secondary-button" id="reshuffle-button" type="button" disabled>↻ Shuffle order</button></div></div>
+      <section class="spotify-export-panel" id="spotify-export-panel" hidden aria-label="Export selected tiers to Spotify">
+        <div class="export-panel-heading"><div><strong>Create a Spotify playlist from tiers</strong><span>Choose any combination. The new playlist will be private.</span></div><button class="secondary-button small-button" id="close-export-panel" type="button" aria-label="Close export options">✕</button></div>
+        <label class="export-name-label" for="export-playlist-name">New playlist name</label>
+        <input class="export-name-input" id="export-playlist-name" type="text" maxlength="100" placeholder="My tier list selection">
+        <div class="export-tier-options" role="group" aria-label="Choose tiers to export">
+          <label><input type="checkbox" class="export-tier-checkbox" value="S" checked><span class="tier-chip tier-s">S</span></label>
+          <label><input type="checkbox" class="export-tier-checkbox" value="A" checked><span class="tier-chip tier-a">A</span></label>
+          <label><input type="checkbox" class="export-tier-checkbox" value="B" checked><span class="tier-chip tier-b">B</span></label>
+          <label><input type="checkbox" class="export-tier-checkbox" value="C" checked><span class="tier-chip tier-c">C</span></label>
+          <label><input type="checkbox" class="export-tier-checkbox" value="D" checked><span class="tier-chip tier-d">D</span></label>
+          <label><input type="checkbox" class="export-tier-checkbox" value="F" checked><span class="tier-chip tier-f">F</span></label>
+        </div>
+        <div class="export-panel-footer"><span id="export-selection-count">Select tiers to see how many songs will be exported.</span><button class="primary-button" id="create-spotify-playlist" type="button" disabled>Create playlist in Spotify</button></div>
+      </section>
+      <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="song-search" type="search" placeholder="Search songs or artists…" autocomplete="off"><kbd>/</kbd></div>
+      <div class="song-list dropzone" id="song-list" data-tier="unranked" aria-live="polite"><div class="empty-state">Connect Spotify and import a playlist to get started.</div></div>
+      <p class="list-footer" id="list-footer">Drag songs into a tier · Changes save automatically in this browser</p>
+    </section>
+    <footer><span>Built for your ears, not the algorithm.</span><span>Spotify-connected tier list</span></footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
